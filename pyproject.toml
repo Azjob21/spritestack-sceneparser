@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spritestack-sceneparser"
+version = "0.1.0"
+description = "Two-stage NLP scene construction & autoregressive level generator pipeline for SpriteStack Studio"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "Azjob21" },
+]
+keywords = [
+    "nlp",
+    "ner",
+    "distilbert",
+    "transformer",
+    "level-generation",
+    "pcg",
+    "game-dev",
+    "pixel-art",
+    "spritestack",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Games/Entertainment",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "torch>=2.1.0",
+    "transformers>=4.36.0",
+    "pyspellchecker>=0.7.2",
+    "numpy>=1.24.0",
+    "Pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+server = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-benchmark>=4.0",
+]
+all = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pytest>=7.0",
+]
+
+[project.scripts]
+sceneparser = "sceneparser.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
